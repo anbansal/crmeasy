@@ -29,14 +29,16 @@ ENV_ROLE = get_env_variable('ENV_ROLE')
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'bx_&i#*&7&07#oci!u5i_7-0uh=487kp3ar-wma(52mz4b5ff_'
+SECRET_KEY = get_env_variable('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+POSTGRES_DB_PASS = False
 if ENV_ROLE == 'development':
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
+    POSTGRES_DB_PASS = get_env_variable('POSTGRES_DB_PASS')
 ALLOWED_HOSTS =  ['localhost', '127.0.0.1']
 
 
@@ -90,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'crmeasyDB',
         'USER': 'postgres',
-        'PASSWORD': 'qwertz',
+        'PASSWORD': POSTGRES_DB_PASS,
         'HOST':'localhost',
         'PORT': '5432',
     }
