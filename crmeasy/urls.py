@@ -14,8 +14,33 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.conf.urls import include, url
+
+from crmeasy.marketing.views import HomePage
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url('admin/', admin.site.urls),
+
+    # Marketing pages
+
+    url('^$',HomePage.as_view(),name="home"),
+    # Subscriber related URLs
+
+
+    # Admin URL
+
+
+    # Login/Logout URLs
+
+
+    # Account related URLs
+
+
+    # Contact related URLS
+
+
+    # Communication related URLs
 ]
