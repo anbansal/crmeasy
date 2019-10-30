@@ -1,5 +1,5 @@
-"""crmeasy URL Configuration
 
+"""crmeasy URL Configuration
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
 Examples:
@@ -14,8 +14,34 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.conf.urls import include, url
+
+from crmeasy.marketing.views import HomePage
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url('admin/', admin.site.urls),
+
+    # Marketing pages
+
+    url('^$', HomePage.as_view(), name="home"),
+    # Subscriber related URLs
+
+
+    # Admin URL
+
+
+    # Login/Logout URLs
+
+
+    # Account related URLs
+
+
+    # Contact related URLS
+
+
+    # Communication related URLs
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
